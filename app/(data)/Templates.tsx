@@ -178,7 +178,7 @@ export default [
         name: 'Facebook Content Ideas',
         desc: 'An AI tool that generates content ideas for Facebook posts.',
         category: 'Facebook',
-        icon: 'https://cdn-icons-png.flaticon.com/128/2504/2504903.pnghttps://cdn-icons-png.flaticon.com/128/2504/2504903.png',
+        icon: 'https://cdn-icons-png.flaticon.com/128/2504/2504903.png',
         aiPrompt: 'Give me 5 engaging Facebook content ideas based on the provided niche and target audience.',
         slug: 'generate-facebook-content-ideas',
         form: [

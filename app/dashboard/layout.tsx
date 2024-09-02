@@ -3,12 +3,12 @@ import SideNav from './_components/SideNav';
 import Header from './_components/Header';
 
 function layout({ 
-    children, 
+  children, 
 } : Readonly<{
-    children: React.ReactNode;
+  children: React.ReactNode;
 }>) {
   return (
-    <div>
+    <div className='bg-slate-100 h-screen'>
       <div className='md:w-64 hidden md:block fixed'>
         <SideNav />
       </div>
