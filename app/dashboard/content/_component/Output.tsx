@@ -1,12 +1,23 @@
-import React, { useRef } from 'react';
+"use client"
+
+import React, { useEffect, useRef } from 'react';
 import '@toast-ui/editor/dist/toastui-editor.css';
 import { Editor } from '@toast-ui/react-editor';
 import { Button } from '@/components/ui/button';
 import { Copy } from 'lucide-react';
 import type { Editor as EditorType } from '@toast-ui/react-editor';
 
-function Output() {
+interface props {
+  aiOutput: string
+}
+
+function Output({aiOutput}: props) {
   const editorRef = useRef<EditorType>(null); // Correctly type the ref
+
+  useEffect(() => {
+    const editorInstance = editorRef.current?.getInstance()
+    editorInstance.setMarkdown(aiOutput);
+  }, [aiOutput])
 
   const handleCopy = () => {
     if (editorRef.current) {
