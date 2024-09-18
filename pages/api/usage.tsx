@@ -8,6 +8,7 @@ export default async function handler(req, res) {
     if (!email) {
         return res.status(400).json({ error: 'Email is required' });
     }
+    
 
     try {
         const result = await db.select().from(aiOutPut)
@@ -19,7 +20,7 @@ export default async function handler(req, res) {
             totalWordCount += responseText.split(/\s+/).filter(Boolean).length;
         });
 
-        res.status(200).json({ totalWordCount });
+        res.status(200).json({ totalUsage: totalWordCount });
     } catch (error) {
         res.status(500).json({ error: 'Error fetching data' });
     }

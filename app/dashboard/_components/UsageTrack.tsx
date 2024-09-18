@@ -1,29 +1,38 @@
-"use client"
+"use client";
 
+import { TotalUsageContext } from '@/app/(context)/TotalUsageContext';
 import { Button } from '@/components/ui/button';
 import { useUser } from '@clerk/nextjs';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 
 function UsageTrack() {
     const { user } = useUser();
-    const [totalWordCount, setTotalWordCount] = useState(0);
+    const { totalUsage, setTotalUsage } = useContext(TotalUsageContext);
 
     useEffect(() => {
         const fetchUsageData = async () => {
-            if (user) {
-                const response = await fetch(`/api/usage?email=${encodeURIComponent(user.primaryEmailAddress?.emailAddress)}`);
-                const data = await response.json();
-                if (response.ok) {
-                    setTotalWordCount(data.totalWordCount);
-                    console.log(`Total word count: ${data.totalWordCount}`);
-                } else {
-                    console.error(data.error);
+            if (user && user.primaryEmailAddress?.emailAddress) {
+                try {
+                    const response = await fetch(`/api/usage?email=${encodeURIComponent(user.primaryEmailAddress.emailAddress)}`);
+                    const data = await response.json();
+    
+                    if (response.ok && data.totalUsage !== undefined) {
+                        setTotalUsage(data.totalUsage);
+                        console.log(`Total word count: ${data.totalUsage}`);
+                    } else {
+                        console.error('Error fetching usage or totalUsage is undefined:', data.error || 'No totalUsage field');
+                    }
+                } catch (error) {
+                    console.error('Fetch error:', error);
                 }
+            } else {
+                console.error("User's primary email address is missing or undefined.");
             }
         };
-
+    
         fetchUsageData();
-    }, [user]);
+    }, [user, setTotalUsage]);
+    
 
     return (
         <div className='m-5'>
@@ -32,11 +41,11 @@ function UsageTrack() {
                 <div className="h-2 bg-[#9981f9] rounded-full mt-3">
                     <div className="h-2 bg-white rounded-full" 
                         style={{ 
-                            width: `${(totalWordCount / 10000) * 100}%` 
+                            width: `${(totalUsage / 10000) * 100}%` 
                         }}                        
                     ></div>
                 </div>
-                <h2 className='text-sm my-2'>{totalWordCount}/10,000 Credits Used</h2>
+                <h2 className='text-sm my-2'>{totalUsage}/10,000 Credits Used</h2>
             </div>
             <Button variant={'secondary'} className='w-full my-3 text-primary'>Upgrade</Button>
         </div>
