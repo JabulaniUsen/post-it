@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import FormSection from '../_component/FormSection';
 import Output from '../_component/Output';
 import { TEMPLATE } from '../../_components/TemplateListSection';
@@ -11,6 +11,8 @@ import Link from 'next/link';
 import { chatSession } from '@/utils/AIModal';
 import { useUser } from '@clerk/nextjs';
 import moment from 'moment';
+import { TotalUsageContext } from '@/app/(context)/TotalUsageContext';
+import { useRouter } from 'next/navigation';
 
 interface PROPS {
   params: {
@@ -23,8 +25,15 @@ function CreateNewContent(props: PROPS) {
   const [loading, setLoading] = useState(false);
   const { user } = useUser();
   const [aiOutput, setAiOutput] = useState<string>("");
+  const router = useRouter()
+  const { totalUsage, setTotalUsage } = useContext(TotalUsageContext);
 
   const GenerateAIContent = async (formData: any) => {
+    if (totalUsage >= 10000) {
+      console.log("Please Upgrade");
+      router.push('/dashboard/billing')
+      return;
+    }
     setLoading(true);
     const SelectedPromp = selectedTemplate?.aiPrompt;
     const FinalAIPrompt = JSON.stringify(formData) + ", " + SelectedPromp;
