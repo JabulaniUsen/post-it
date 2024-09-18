@@ -8,7 +8,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const { formData, slug, aiResponse, createdBy } = req.body;
 
     try {
-      // Insert the data into the database
       const result = await db.insert(aiOutPut).values({
         formData: JSON.stringify(formData),
         templateSlug: slug,

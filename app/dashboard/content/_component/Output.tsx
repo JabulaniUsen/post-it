@@ -7,22 +7,29 @@ import { Button } from '@/components/ui/button';
 import { Copy } from 'lucide-react';
 import type { Editor as EditorType } from '@toast-ui/react-editor';
 
-interface props {
-  aiOutput: string
+interface Props {
+  aiOutput: string;
 }
 
-function Output({aiOutput}: props) {
-  const editorRef = useRef<EditorType>(null); // Correctly type the ref
+function Output({ aiOutput }: Props) {
+  const editorRef = useRef<EditorType>(null);
 
   useEffect(() => {
-    const editorInstance = editorRef.current?.getInstance()
-    editorInstance.setMarkdown(aiOutput);
-  }, [aiOutput])
+    const editorInstance = editorRef.current?.getInstance();
+    if (editorInstance) {
+      editorInstance.setMarkdown(aiOutput);
+    }
+  }, [aiOutput]);
 
-  const handleCopy = () => {
+  const handleCopy = async () => {
     if (editorRef.current) {
       const markdown = editorRef.current.getInstance().getMarkdown();
-      navigator.clipboard.writeText(markdown);
+      try {
+        await navigator.clipboard.writeText(markdown);
+        console.log("Copied to clipboard!");
+      } catch (error) {
+        console.error("Failed to copy: ", error);
+      }
     }
   };
 
@@ -30,7 +37,7 @@ function Output({aiOutput}: props) {
     <div className='bg-white shadow-lg border rounded-lg'>
       <div className="flex justify-between items-center p-5">
         <h2 className='font-medium text-lg'>Your Result</h2>
-        <Button className='flex gap-2' onClick={handleCopy}>
+        <Button className='flex gap-2' onClick={handleCopy} aria-label="Copy Markdown">
           <Copy className='h-4 w-4' /> Copy 
         </Button>
       </div>
