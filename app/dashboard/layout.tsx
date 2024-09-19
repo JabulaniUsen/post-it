@@ -18,10 +18,14 @@ function Layout({
       <UserSubscriptionContext.Provider value={{ userSubscription, setUserSubscription }}>
         <div className='bg-slate-100 h-screen'>
           <div className='md:w-64 hidden md:block fixed'>
-            <SideNav />
+            <SideNav isOpen={false} toggleMenu={function (): void {
+              throw new Error('Function not implemented.');
+            } } />
           </div>
           <div className='md:ml-64'>
-            <Header />
+            <Header toggleMenu={function (): void {
+              throw new Error('Function not implemented.');
+            } } />
             {children}
           </div>
         </div>

@@ -13,7 +13,9 @@ function Header() {
         <h2 className="bg-primary p-1 rounded-full text-xs px-2 text-orange-400">
         ️‍🔥 <span className='text-white'>Join Membership for just $9.99/Month</span> 
         </h2>
-        <UserButton/>
+        <div className="lg:block hidden">
+          <UserButton/>
+        </div>
       </div>
     </div>
   )
