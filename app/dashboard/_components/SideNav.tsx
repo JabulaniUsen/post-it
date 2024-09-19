@@ -17,7 +17,7 @@ function SideNav({ isOpen, toggleSidebar }: { isOpen: boolean, toggleSidebar: ()
 
     return (
         <div 
-            className={`h-screen fixed top-0 left-0 p-5 shadow-sm border bg-white transition-transform transform
+        className={`h-screen fixed top-0 left-0 p-5 shadow-sm border bg-white transition-transform transform
             ${isOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 md:static z-50`}
         >
             <div className="flex justify-center">

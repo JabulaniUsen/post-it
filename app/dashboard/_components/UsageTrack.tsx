@@ -4,6 +4,7 @@ import { TotalUsageContext } from '@/app/(context)/TotalUsageContext';
 import { UserSubscriptionContext } from '@/app/(context)/UserSubscriptionContext';
 import { Button } from '@/components/ui/button';
 import { useUser } from '@clerk/nextjs';
+import Link from 'next/link';
 import React, { useContext, useEffect } from 'react';
 
 function UsageTrack() {
@@ -53,7 +54,9 @@ function UsageTrack() {
                 </div>
                 <h2 className='text-sm my-2'>{totalUsage}/10,000 Credits Used</h2>
             </div>
-            <Button variant={'secondary'} className='w-full my-3 text-primary'>Upgrade</Button>
+            <Link href='/dashboard/billing'>
+                <Button variant={'secondary'} className='w-full hover:border my-3 text-primary'>Upgrade</Button>
+            </Link>
         </div>
     );
 }
