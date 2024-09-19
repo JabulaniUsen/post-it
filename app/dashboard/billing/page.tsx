@@ -101,7 +101,7 @@ const Pricing = () => {
           {plans.map((plan) => (
             <div
               key={plan.name}
-              className={`relative overflow-hidden bg-white flex flex-col justify-between border border-transparent hover:shadow-2xl hover:border-purple-500 transition-transform transform hover:-translate-y-2 rounded-xl shadow-md p-8 ${
+              className={` bg-white flex flex-col justify-between border border-transparent hover:shadow-2xl hover:border-purple-500 transition-transform lg:hover:-translate-y-2 rounded-xl shadow-md p-8 ${
                 plan.isFree ? 'bg-gray-100' : 'bg-white'
               }`}
             >
