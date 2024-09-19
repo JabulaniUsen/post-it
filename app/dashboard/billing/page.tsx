@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
 import React, { useState } from 'react';
 import PaystackPayment from '../_components/PaystackPayment';
-import { useUser } from '@clerk/clerk-react';
+import { v4 as uuidv4 } from 'uuid';
 
 const Pricing = () => {
-
-  const [selectedPlan, setSelectedPlan] = useState(null);
+  const [selectedPlan, setSelectedPlan] = useState<any>(null);
   const [showPopup, setShowPopup] = useState(false);
   const [inputEmail, setInputEmail] = useState('');
 
+  // Plan Options
   const plans = [
     {
       name: 'Free Plan',
@@ -24,7 +24,7 @@ const Pricing = () => {
     },
     {
       name: 'Premium Plan',
-      price: 9.99,
+      price: 9.99, // In dollars (you can convert to kobo later)
       description: 'Unlock advanced features and priority support.',
       features: [
         '10,000 credits per month',
@@ -33,23 +33,56 @@ const Pricing = () => {
         'Access to new features',
       ],
       isFree: false,
+      planCode: 'PLN_7a2qbdc40nbg9dw'
     },
   ];
 
-  const handlePlanSelect = (plan) => {
+  // Handle plan selection and open payment popup
+  const handlePlanSelect = (plan: any) => {
     setSelectedPlan(plan);
     setShowPopup(true);
   };
 
+  // Handle popup close
   const handlePopupClose = () => {
     setShowPopup(false);
-    setInputEmail(''); // Clear email input
+    setInputEmail(''); // Clear the email input field
   };
 
-  const handleSubmit = (event: { preventDefault: () => void; }) => {
+  // Handle form submit (trigger payment)
+  const handleSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
     setShowPopup(false);
-    // You may handle other form submission logic here if needed
+
+    // Payment submission can be handled here or directly in the Paystack component
+    // No need to do much here if Paystack payment handles success
+  };
+
+  // Payment success callback
+  const handlePaymentSuccess = (reference: any) => {
+    console.log('Payment successful, reference:', reference);
+
+    // After successful payment, you can store the subscription details in your database
+    // Example fetch request to your backend:
+    fetch('/api/subscriptions', {
+      method: 'POST',
+      body: JSON.stringify({
+        email: inputEmail,
+        plan: selectedPlan?.name,
+        amount: selectedPlan?.price,
+        reference: reference.reference,
+        status: 'active',
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }).then(response => {
+      if (response.ok) {
+        alert('Subscription recorded successfully');
+      }
+    });
+
+    // Optionally, you can redirect or show a success message
   };
 
   return (
@@ -122,7 +155,7 @@ const Pricing = () => {
             <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md animate-popup">
               <h3 className="text-2xl font-bold mb-4 text-gray-900">Confirm Your Plan</h3>
               <form onSubmit={handleSubmit}>
-                <p className="mb-4"><span className='font-bold'>Plan:</span> {selectedPlan?.name} plan.</p>
+                <p className="mb-4"><span className='font-bold'>Plan:</span> {selectedPlan?.name}.</p>
                 <p className="mb-4"><span className='font-bold'>Price:</span> ${selectedPlan?.price}</p>
                 <p className="mb-4"><span className='font-bold'>Duration:</span> 1 month</p>
                 <div className="mb-6">
@@ -145,12 +178,14 @@ const Pricing = () => {
                   >
                     Cancel
                   </button>
-                  <button
-                    type="submit"
-                    className="py-2 px-4 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700"
-                  >
-                    {selectedPlan && <PaystackPayment amount={selectedPlan.price} email={inputEmail} />}
-                  </button>
+                  <PaystackPayment
+                    amount={selectedPlan?.price}
+                    email={inputEmail}
+                    reference={uuidv4()} // Generate unique reference
+                    onSuccess={handlePaymentSuccess}
+                    planCode={selectedPlan.planCode}
+                  />
+
                 </div>
               </form>
             </div>

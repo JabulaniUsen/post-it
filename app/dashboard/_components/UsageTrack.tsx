@@ -1,6 +1,7 @@
 "use client";
 
 import { TotalUsageContext } from '@/app/(context)/TotalUsageContext';
+import { UserSubscriptionContext } from '@/app/(context)/UserSubscriptionContext';
 import { Button } from '@/components/ui/button';
 import { useUser } from '@clerk/nextjs';
 import React, { useContext, useEffect } from 'react';
@@ -8,6 +9,8 @@ import React, { useContext, useEffect } from 'react';
 function UsageTrack() {
     const { user } = useUser();
     const { totalUsage, setTotalUsage } = useContext(TotalUsageContext);
+    const {userSubscription, setUserSubscription} = useContext(UserSubscriptionContext)
+
 
     useEffect(() => {
         const fetchUsageData = async () => {

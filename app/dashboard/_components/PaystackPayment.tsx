@@ -1,30 +1,21 @@
-'use client'; // Make sure this is a Client Component
+'use client';
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { PaystackButton } from 'react-paystack';
 
 interface PaystackProps {
-  amount: number; // Amount in dollars
+  amount: number; // In kobo
   email: string;
+  reference: string; // Unique reference for the transaction
+  planCode?: any; // Paystack subscription plan code if you are handling Paystack plans
+  onSuccess: (reference: any) => void;
 }
 
-const PaystackPayment: React.FC<PaystackProps> = ({ amount, email }) => {
-  const [isBrowser, setIsBrowser] = useState(false);
-
-  useEffect(() => {
-    setIsBrowser(true);
-  }, []);
-
-  if (!isBrowser) {
-    return null; // Render nothing on the server side
-  }
-
+const PaystackPayment: React.FC<PaystackProps> = ({ amount, email, reference, planCode, onSuccess }) => {
   const publicKey = process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY as string;
-  const amountInKobo = amount * 1660; // Convert dollars to kobo (cents)
 
   const handleSuccess = (reference: any) => {
-    console.log("Payment successful", reference);
-    window.location.reload()
+    onSuccess(reference);
   };
 
   const handleClose = () => {
@@ -33,11 +24,13 @@ const PaystackPayment: React.FC<PaystackProps> = ({ amount, email }) => {
 
   const componentProps = {
     email,
-    amount: amountInKobo,
+    amount, // Amount in kobo
     publicKey,
     text: 'Pay Now',
+    reference,
     onSuccess: handleSuccess,
     onClose: handleClose,
+    plan: planCode,
   };
 
   return <PaystackButton {...componentProps} />;
