@@ -1,3 +1,4 @@
+import { UserButton } from '@clerk/clerk-react'
 import { Search } from 'lucide-react'
 import React from 'react'
 
@@ -8,8 +9,11 @@ function Header() {
         <Search/>
         <input type="text" placeholder='Search...' className='outline-none' />
       </div>
-      <div className="bg-primary p-1 rounded-full text-xs text-white px-2">
-      ️‍🔥Join Membership for just $9.99/Month
+      <div className="flex gap-5 items-center">
+        <h2 className="bg-primary p-1 rounded-full text-xs px-2 text-orange-400">
+        ️‍🔥 <span className='text-white'>Join Membership for just $9.99/Month</span> 
+        </h2>
+        <UserButton/>
       </div>
     </div>
   )

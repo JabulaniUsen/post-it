@@ -12,22 +12,22 @@ const Pricing = () => {
   // Plan Options
   const plans = [
     {
-      name: 'Free Plan',
+      name: 'Free',
       price: 0.00,
       description: 'Enjoy basic features at no cost.',
       features: [
-        '3,000 credits per month',
+        '10,000 credits',
         'Basic templates',
         'Community support',
       ],
       isFree: true,
     },
     {
-      name: 'Premium Plan',
+      name: 'Premium',
       price: 9.99, // In dollars (you can convert to kobo later)
       description: 'Unlock advanced features and priority support.',
       features: [
-        '10,000 credits per month',
+        '100,000 credits per month',
         'Premium templates',
         'Priority support',
         'Access to new features',
@@ -88,7 +88,7 @@ const Pricing = () => {
   return (
     <section className="bg-gradient-to-r from-indigo-100 via-purple-100 to-pink-100 py-16">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
-        <div className="mb-12 text-center">
+        <div className="mb-12">
           <h2 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-600">
             Choose Your Plan
           </h2>
@@ -105,7 +105,7 @@ const Pricing = () => {
                 plan.isFree ? 'bg-gray-100' : 'bg-white'
               }`}
             >
-              <h3 className="text-2xl font-bold text-gray-800 mb-4">{plan.name}</h3>
+              <h3 className="text-2xl font-bold text-gray-800 mb-4">{plan.name} Plan</h3>
               <p className="mb-6 text-gray-600">{plan.description}</p>
               <div>
                 <p className="text-5xl font-bold text-purple-600">
@@ -178,14 +178,15 @@ const Pricing = () => {
                   >
                     Cancel
                   </button>
-                  <PaystackPayment
-                    amount={selectedPlan?.price}
-                    email={inputEmail}
-                    reference={uuidv4()} // Generate unique reference
-                    onSuccess={handlePaymentSuccess}
-                    planCode={selectedPlan.planCode}
-                  />
-
+                  <button className='py-3 px-6 bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-bold rounded-lg hover:opacity-90 transition-opacity'>
+                    <PaystackPayment
+                      amount={selectedPlan?.price}
+                      email={inputEmail}
+                      reference={uuidv4()} // Generate unique reference
+                      onSuccess={handlePaymentSuccess}
+                      planCode={selectedPlan.planCode}
+                    />
+                  </button>
                 </div>
               </form>
             </div>

@@ -36,6 +36,9 @@ function UsageTrack() {
         fetchUsageData();
     }, [user, setTotalUsage]);
     
+    const IsUserSubscribed = () => {
+        
+    }
 
     return (
         <div className='m-5'>
