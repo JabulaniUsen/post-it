@@ -1,6 +1,5 @@
 "use client"; // Mark this as a Client Component
 
-import { Button } from '@/components/ui/button';
 import React from 'react';
 
 interface CopyButtonProps {
@@ -18,12 +17,12 @@ const CopyButton: React.FC<CopyButtonProps> = ({ textToCopy }) => {
     };
 
     return (
-        <Button
-            className="ml-2 px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
+        <button
+            className="ml-5 p-2 text-blue-500 text-sm bg-blue-50 rounded hover:text-blue-600 hover:font-medium transition-all"
             onClick={copyToClipboard}
         >
             Copy
-        </Button>
+        </button>
     );
 };
 
