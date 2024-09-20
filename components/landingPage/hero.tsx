@@ -6,7 +6,7 @@ import heroImg from '../../public/heroImg.svg'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 
-function hero() {
+function Hero() {
   const router = useRouter(); 
 
   const handleNavigate = () => {
@@ -52,4 +52,4 @@ function hero() {
   )
 }
 
-export default hero
+export default Hero
