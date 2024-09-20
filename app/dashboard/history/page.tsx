@@ -7,13 +7,14 @@ import Templates from '@/app/(data)/Templates';
 import CopyButton from '../_components/copyButton';
 
 export interface HISTORY {
-    id: Number;
+    id: number;
     formData: string;
-    aiResponse: string;
+    aiResponse: string | null;  // Allow null values
     templateSlug: string;
     createdBy: string;
-    createdAt: string;
+    createdAt: string | null;  // Allow null values
 }
+
 
 const GetTemplateName = (slug: string) => {
     const template = Templates?.find((item) => item.slug === slug);
@@ -28,7 +29,7 @@ const GetTemplateImage = (slug: string) => {
 const History = async () => {
     const user = await currentUser();
 
-    if (!user) {
+    if (!user || !user.primaryEmailAddress?.emailAddress) {
         return <div>Please log in to view your history.</div>;
     }
 
@@ -99,7 +100,7 @@ const History = async () => {
                                 </td>
 
                                 <td>
-                                    <CopyButton textToCopy={history.aiResponse} />
+                                    <CopyButton textToCopy={history.aiResponse || ''} />
                                 </td>
                             </tr>
                         ))}
