@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import React from 'react';
 import UsageTrack from './UsageTrack';
+import Logo from '@/components/landingPage/Logo';
 
 function SideNav({ isOpen, toggleSidebar }: { isOpen: boolean, toggleSidebar: () => void }) {
     const router = useRouter();
@@ -21,7 +22,7 @@ function SideNav({ isOpen, toggleSidebar }: { isOpen: boolean, toggleSidebar: ()
             ${isOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 md:static z-50`}
         >
             <div className="flex justify-center">
-                <Image src={'/logo.svg'} alt="postit-logo" width={120} height={100} />
+                <Logo/>
             </div>
             <hr className="my-6 border" />
             <div className="mt-3">

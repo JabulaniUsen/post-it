@@ -1,9 +1,9 @@
 'use client';
 
-import { useRouter } from 'next/navigation'; // Updated import
+import { useRouter } from 'next/navigation'; 
 
 const Pricing = () => {
-  const router = useRouter(); // Use the updated Next.js router
+  const router = useRouter(); 
 
   // Plan Options
   const plans = [

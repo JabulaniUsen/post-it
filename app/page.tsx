@@ -8,7 +8,7 @@ import Services from '@/components/landingPage/Services';
 export default function Home() {
 
   return (
-    <div className="bg-[#f1edf9]">
+    <div className="bg-[#f1edf9] poppins">
       <Navbar />
       <Hero />
       <Why />

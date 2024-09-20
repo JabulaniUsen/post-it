@@ -4,8 +4,16 @@ import { ArrowBigRight, ArrowRight, ArrowRightCircle, MoveRight, PlayCircleIcon,
 import React from 'react'
 import heroImg from '../../public/heroImg.svg'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
 function hero() {
+  const router = useRouter(); 
+
+  const handleNavigate = () => {
+    router.push('/dashboard');
+  };
+
+ 
   return (
     <div>
       <div className="lg:px-[50px] px-5 lg:mt-0 mt-20 grid grid-cols-1 place-items-center lg:grid-cols-2">
@@ -25,14 +33,14 @@ function hero() {
 
             </p>
             <div className="buttons flex items-center gap-8 mt-3 mb-6">
-                <button className='bg-[#1d2939] text-sm transition-all hover:scale-105 text-white px-6 py-3 rounded-3xl flex items-center gap-5'>
+                <button onClick={handleNavigate} className='bg-[#1d2939] text-sm transition-all hover:scale-105 text-white px-6 py-3 rounded-3xl flex items-center gap-5'>
                     Get Started
                     <ArrowRightCircle className='text-sm lg:block hidden' />
                 </button>
-                <button className='px-6 py-3 text-sm hover:scale-105 border transition-all rounded-3xl flex items-center gap-5'>
+                {/* <button className='px-6 py-3 text-sm hover:scale-105 border transition-all rounded-3xl flex items-center gap-5'>
                     <PlayCircleIcon className='text-sm text-[#6941C6] lg:block hidden ' />
                     Watch Intro
-                </button>
+                </button> */}
             </div>
         </div>
 

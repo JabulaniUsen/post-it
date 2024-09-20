@@ -18,7 +18,7 @@ function Layout({
   return (
     <TotalUsageContext.Provider value={{ totalUsage, setTotalUsage }}>
       <UserSubscriptionContext.Provider value={{ userSubscription, setUserSubscription }}>
-        <div className='bg-slate-100 h-screen'>
+        <div className='bg-slate-100 h-screen poppins'>
           <div className='md:w-64 fixed'>
             {/* Sidebar for mobile and desktop */}
             <SideNav isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
