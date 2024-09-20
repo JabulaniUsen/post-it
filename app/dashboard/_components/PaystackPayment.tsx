@@ -1,9 +1,12 @@
-'use client';
-
 import { TotalUsageContext } from '@/app/(context)/TotalUsageContext';
 import { UserSubscriptionContext } from '@/app/(context)/UserSubscriptionContext';
-import React, { useContext } from 'react';
-import { PaystackButton } from 'react-paystack';
+import dynamic from 'next/dynamic';
+import React from 'react';
+
+// Dynamically import PaystackButton with SSR disabled
+const PaystackButton = dynamic(() => import('react-paystack').then(mod => mod.PaystackButton), {
+  ssr: false,
+});
 
 interface PaystackProps {
   amount: number; // In kobo
@@ -17,8 +20,8 @@ const PaystackPayment: React.FC<PaystackProps> = ({ amount, email, reference, pl
   const publicKey = process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY as string;
 
   // Move useContext hooks inside the component body
-  const { setTotalUsage } = useContext(TotalUsageContext);
-  const { setUserSubscription } = useContext(UserSubscriptionContext);
+  const { setTotalUsage } = React.useContext(TotalUsageContext);
+  const { setUserSubscription } = React.useContext(UserSubscriptionContext);
 
   const handleSuccess = async (reference: any) => {
     console.log("Payment successful:", reference);
