@@ -2,7 +2,7 @@ import { db } from '@/utils/db';
 import { users, aiOutPut } from '@/utils/schema';
 import { eq } from 'drizzle-orm';
 
-export default async function handler(req, res) {
+export default async function handler(req: any, res: any) {
     const { email, updateCredits } = req.query;
 
     if (!email) {
