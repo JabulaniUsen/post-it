@@ -61,7 +61,7 @@ function FormSection({ selectedTemplate, userFormInput, loading }: PROPS) {
           disabled={loading}
           >
             {loading && <LoaderIcon className='animate-spin' />}
-            Generate Content
+            {loading ? "Cooking..." : "Generate Content"}
         </Button>
       </form>
     </div>

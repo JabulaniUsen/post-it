@@ -1,5 +1,4 @@
-import { FileClock, Home, Settings, WalletCards } from 'lucide-react';
-import Image from 'next/image';
+import { FileClock, Home, Image, Settings, WalletCards } from 'lucide-react';
 import { usePathname, useRouter } from 'next/navigation';
 import React from 'react';
 import UsageTrack from './UsageTrack';
@@ -13,6 +12,7 @@ function SideNav({ isOpen, toggleSidebar }: { isOpen: boolean, toggleSidebar: ()
         { name: 'Home', icon: Home, path: '/dashboard' },
         { name: 'History', icon: FileClock, path: '/dashboard/history' },
         { name: 'Billing', icon: WalletCards, path: '/dashboard/billing' },
+        { name: 'Meme generator', icon: Image, path: '/dashboard/mememaker' },
         { name: 'Settings', icon: Settings, path: '/dashboard/settings' },
     ];
 
