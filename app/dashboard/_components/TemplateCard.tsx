@@ -13,8 +13,8 @@ function TemplateCard(item: TEMPLATE) {
               width={50}
               height={50}
           />
-          <h2 className='font-medium text-lg'>{item.name}</h2>
-          <p className="text-gray-500 line-clamp-3">{item.desc}</p>        
+          <h2 className='font-medium lg:text-lg text-base'>{item.name}</h2>
+          <p className="text-gray-500 line-clamp-3 lg:text-base text-sm">{item.desc}</p>        
       </div>
     </Link>
   )

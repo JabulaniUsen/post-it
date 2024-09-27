@@ -101,6 +101,28 @@ export default [
         ]
     },
     {
+        name: 'Facebook Bio Generator',
+        desc: 'An AI tool that generates a captivating bio for your Facebook profile.',
+        category: 'Facebook',
+        icon: "https://cdn-icons-png.flaticon.com/128/15051/15051154.png",
+        aiPrompt: 'Generate a creative and engaging Facebook bio based on the given personality traits and interests.',
+        slug: 'generate-facebook-bio',
+        form: [
+            {
+                label: 'Enter your personality traits',
+                field: 'textarea',
+                name: 'traits',
+                required: true
+            },
+            {
+                label: 'Enter your interests or hobbies',
+                field: 'textarea',
+                name: 'interests',
+                required: true
+            }
+        ]
+    },    
+    {
         name: 'Instagram Hashtags',
         desc: 'An AI tool that generates relevant hashtags for Instagram posts.',
         category: 'Instagram',
@@ -138,6 +160,28 @@ export default [
         ]
     },
     {
+        name: 'Instagram Bio Generator',
+        desc: 'An AI tool that creates an engaging Instagram bio to attract followers.',
+        category: 'Instagram',
+        icon: "https://cdn-icons-png.flaticon.com/128/2111/2111463.png",
+        aiPrompt: 'Generate a creative and captivating Instagram bio based on the given theme, niche, and personality traits.',
+        slug: 'generate-instagram-bio',
+        form: [
+            {
+                label: 'Enter your theme or niche',
+                field: 'input',
+                name: 'niche',
+                required: true
+            },
+            {
+                label: 'Enter your personality traits',
+                field: 'textarea',
+                name: 'traits',
+                required: true
+            }
+        ]
+    },    
+    {
         name: 'Keyword Research Tool',
         desc: 'An AI tool that helps you find the best keywords for your content or campaign.',
         category: 'SEO',
@@ -159,6 +203,76 @@ export default [
             }
         ]
     },
+    {
+        name: 'LinkedIn Bio Generator',
+        desc: 'An AI tool that generates a professional LinkedIn bio to enhance your profile.',
+        category: 'LinkedIn',
+        icon: "https://cdn-icons-png.flaticon.com/128/3488/3488311.png",
+        aiPrompt: 'Generate a professional LinkedIn bio based on the given profession, skills, and achievements.',
+        slug: 'generate-linkedin-bio',
+        form: [
+            {
+                label: 'Enter your profession or role',
+                field: 'input',
+                name: 'profession',
+                required: true
+            },
+            {
+                label: 'Enter your key skills',
+                field: 'textarea',
+                name: 'skills',
+                required: true
+            },
+            {
+                label: 'Enter your achievements or experiences',
+                field: 'textarea',
+                name: 'achievements'
+            }
+        ]
+    },
+    {
+        name: 'LinkedIn Content Generator',
+        desc: 'An AI tool that generates engaging LinkedIn content based on the given topic and target audience.',
+        category: 'LinkedIn',
+        icon: "https://cdn-icons-png.flaticon.com/128/14449/14449766.png",
+        aiPrompt: 'Generate a professional and engaging LinkedIn post based on the provided topic and audience. Include relevant insights, call-to-actions, and hashtags.',
+        slug: 'generate-linkedin-content',
+        form: [
+            {
+                label: 'Enter the topic or subject',
+                field: 'input',
+                name: 'topic',
+                required: true
+            },
+            {
+                label: 'Enter target audience',
+                field: 'textarea',
+                name: 'audience',
+                required: true
+            }
+        ]
+    },     
+    {
+        name: 'LinkedIn Content Ideas',
+        desc: 'An AI tool that generates content ideas for LinkedIn posts.',
+        category: 'LinkedIn',
+        icon: "https://cdn-icons-png.flaticon.com/128/174/174857.png",
+        aiPrompt: 'Generate 5 engaging LinkedIn content ideas based on the provided profession and target audience.',
+        slug: 'generate-linkedin-content-ideas',
+        form: [
+            {
+                label: 'Enter your profession or role',
+                field: 'input',
+                name: 'profession',
+                required: true
+            },
+            {
+                label: 'Enter target audience',
+                field: 'textarea',
+                name: 'audience'
+            }
+        ]
+    },       
     {
         name: 'Plagiarism Checker',
         desc: 'An AI tool that checks for plagiarism in your content.',
@@ -251,6 +365,60 @@ export default [
             }
         ]
     },
+    {
+        name: 'X Bio Generator',
+        desc: 'An AI tool that generates a concise and impactful X bio.',
+        category: 'Twitter',
+        icon: "https://cdn-icons-png.flaticon.com/128/5968/5968830.png",
+        aiPrompt: 'Generate a short and engaging X(Twitter) bio based on the given profession, interests, and personality traits.',
+        slug: 'generate-twitter-bio',
+        form: [
+            {
+                label: 'Enter your profession or role',
+                field: 'input',
+                name: 'profession',
+                required: true
+            },
+            {
+                label: 'Enter your interests or hobbies',
+                field: 'textarea',
+                name: 'interests',
+                required: true
+            },
+            {
+                label: 'Enter your personality traits',
+                field: 'textarea',
+                name: 'traits'
+            }
+        ]
+    },
+    {
+        name: 'X Thread Maker',
+        desc: 'An AI tool that creates engaging X threads based on the given topic and key points.',
+        category: 'Twitter',
+        icon: "https://cdn-icons-png.flaticon.com/128/5969/5969020.png",
+        aiPrompt: 'Create a detailed X(Twitter) thread based on the provided topic and key points. Ensure each tweet is concise, engaging, and includes relevant hashtags.',
+        slug: 'generate-twitter-thread',
+        form: [
+            {
+                label: 'Enter the main topic',
+                field: 'input',
+                name: 'topic',
+                required: true
+            },
+            {
+                label: 'Enter key points (one per line)',
+                field: 'textarea',
+                name: 'keyPoints',
+                required: true
+            },
+            {
+                label: 'Include hashtags (optional)',
+                field: 'textarea',
+                name: 'hashtags'
+            }
+        ]
+    },    
     {
         name: 'YouTube Content Generator',
         desc: 'An AI tool that generates YouTube video scripts and content ideas.',

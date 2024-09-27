@@ -77,7 +77,7 @@ function CreateNewContent(props: PROPS) {
   
 
   return (
-    <div className="p-10">
+    <div className="lg:p-10 p-5">
       <Link href="/dashboard">
         <Button>
           <ArrowLeftCircle />

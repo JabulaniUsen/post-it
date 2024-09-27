@@ -12,14 +12,19 @@ function SideNav({ isOpen, toggleSidebar }: { isOpen: boolean, toggleSidebar: ()
         { name: 'Home', icon: Home, path: '/dashboard' },
         { name: 'History', icon: FileClock, path: '/dashboard/history' },
         { name: 'Billing', icon: WalletCards, path: '/dashboard/billing' },
-        { name: 'Meme generator', icon: Image, path: '/dashboard/mememaker' },
+        { 
+            name: 'Meme generator', 
+            icon: Image, 
+            path: '/dashboard/mememaker', 
+            tag: 'New'
+        },
         { name: 'Settings', icon: Settings, path: '/dashboard/settings' },
     ];
 
     return (
         <div 
-        className={`h-screen fixed top-0 left-0 p-5 shadow-sm border bg-white transition-transform transform
-            ${isOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 md:static z-50`}
+            className={`h-screen fixed top-0 left-0 p-5 shadow-sm border bg-white transition-transform transform
+                ${isOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 md:static z-50`}
         >
             <div className="flex justify-center">
                 <Logo/>
@@ -36,7 +41,12 @@ function SideNav({ isOpen, toggleSidebar }: { isOpen: boolean, toggleSidebar: ()
                         `}
                     >
                         <menu.icon />
-                        <h2>{menu.name}</h2>
+                        <h2 className='lg:text-base text-sm'>{menu.name}</h2>
+                        {menu.tag && (
+                            <span className="ml-2 text-xs text-white bg-red-500 px-2 py-1 rounded-full">
+                                {menu.tag}
+                            </span>
+                        )}
                     </div>
                 ))}
             </div>
