@@ -208,7 +208,7 @@ export default [
         desc: 'An AI tool that generates a professional LinkedIn bio to enhance your profile.',
         category: 'LinkedIn',
         icon: "https://cdn-icons-png.flaticon.com/128/3488/3488311.png",
-        aiPrompt: 'Generate a professional LinkedIn bio based on the given profession, skills, and achievements.',
+        aiPrompt: "Generate a professional LinkedIn bio based on the given profession, skills, and achievements. Do not exceeded maximum character length of 220",
         slug: 'generate-linkedin-bio',
         form: [
             {
