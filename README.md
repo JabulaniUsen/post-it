@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+PostIt - AI-Powered Content Generator
+PostIt is an AI-powered content generator designed to help content creators, influencers, digital marketers, and businesses streamline their social media and SEO content creation across platforms like Facebook, X (formerly Twitter), Instagram, TikTok, YouTube, and more.
 
-## Getting Started
+Features
+AI-Powered Content Creation: Generate tailored content for multiple platforms, including blogs, YouTube SEO, and more.
+Niche & Keyword Research: Get recommendations for niche selection and keyword optimization.
+Meme Generator: Create custom memes for enhanced engagement.
+User Authentication: Seamless sign-up and login using Clerk.
+Responsive Design: Built with Tailwind CSS for a responsive and modern user interface.
+Database: Supabase PostgreSQL with Drizzle ORM.
+Gemini Integration: Enhanced AI capabilities for superior content generation.
+Tech Stack
+Frontend: Next.js, React.js, Tailwind CSS
+Authentication: Clerk
+Database: Supabase PostgreSQL with Drizzle ORM
+Integrations: Gemini, Meme Generator API (Imgflip)
+Getting Started
+Prerequisites
+Node.js
+Supabase Project
+Clerk API keys
+Installation
+Clone the repository:
 
-First, run the development server:
+bash
+Copy code
+git clone https://github.com/your-repo/PostIt.git
+cd PostIt
+Install dependencies:
 
-```bash
+bash
+Copy code
+npm install
+Set up environment variables: Create a .env.local file with the following:
+
+bash
+Copy code
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+NEXT_PUBLIC_CLERK_FRONTEND_API=your_clerk_frontend_api
+NEXT_PUBLIC_CLERK_API_KEY=your_clerk_api_key
+Run the app:
+
+bash
+Copy code
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Usage
+Sign up or log in using Clerk.
+Generate content by selecting a platform (e.g., Facebook, Instagram).
+Use the meme generator for custom meme creation.
+Manage and store your content seamlessly with Supabase.
+Contributing
+Feel free to open issues or submit pull requests for improvements.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+License
+This project is licensed under the MIT License.
