@@ -22,27 +22,22 @@ Clerk API keys
 Installation
 Clone the repository:
 
-bash
-Copy code
 git clone https://github.com/your-repo/PostIt.git
 cd PostIt
 Install dependencies:
 
-bash
-Copy code
 npm install
 Set up environment variables: Create a .env.local file with the following:
 
-bash
-Copy code
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+
 NEXT_PUBLIC_CLERK_FRONTEND_API=your_clerk_frontend_api
+
 NEXT_PUBLIC_CLERK_API_KEY=your_clerk_api_key
 Run the app:
 
-bash
-Copy code
 npm run dev
 Usage
 Sign up or log in using Clerk.
