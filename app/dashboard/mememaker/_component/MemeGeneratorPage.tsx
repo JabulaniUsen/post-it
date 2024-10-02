@@ -171,8 +171,7 @@ const MemeGenerator: React.FC = () => {
                   onClick={downloadMeme}
                   className="inline-block mt-4 bg-green-500 text-white p-3 rounded-lg hover:bg-green-600"
                 >
-                  <Download className="mr-2" />
-                  Download Meme
+                  <Download />
                 </button>
 
             </div>
