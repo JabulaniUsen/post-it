@@ -97,13 +97,13 @@ const MemeGenerator: React.FC = () => {
   
 
   return (
-    <div className="container mx-auto p-8">
+    <div className="container mx-auto py-8 px-2 ">
       <h1 className="lg:text-4xl text-3xl font-bold text-center mb-8 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-600">Create Your Own Meme</h1>
 
       {/* Meme Catalog */}
-      <div className="text-center mb-8 lg:p-10 p-3 border shadow-md rounded-lg">
+      <div className="text-center mb-8 lg:p-10 p-3 backdrop-blur-md bg-white/70 border border-purple-600 shadow-md rounded-lg">
         <h2 className="lg:text-2xl text-xl text-gray-600 mb-4">Select a Meme Template</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 h-[300px] overflow-y-scroll">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 h-[350px] overflow-y-scroll">
           {memes.map((meme) => (
             <div
               key={meme.id}
