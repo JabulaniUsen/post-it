@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# PostIt - AI-Powered Content Generator
 
-## Getting Started
+## Overview
 
-First, run the development server:
+**PostIt** is an AI-powered content generator designed to assist content creators, influencers, and digital marketers in generating engaging content for social media and SEO platforms. It streamlines the content creation process with features for niche selection, keyword optimization, and meme generation.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Generate tailored content for platforms like Facebook, Instagram, TikTok, and YouTube.
+- Conduct niche and keyword research to enhance SEO.
+- Create custom memes for increased engagement.
+- User-friendly interface built with a responsive design.
+- Seamless authentication using Clerk for user management.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Technologies Used
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- **Next.js**: Framework for server-side rendering and building React applications.
+- **React.js**: Library for building user interfaces.
+- **Tailwind CSS**: Utility-first CSS framework for styling.
+- **Clerk**: Authentication service for user management.
+- **Supabase**: Database management with PostgreSQL.
+- **Drizzle ORM**: For efficient database interactions.
+- **Gemini**: Integration for enhanced AI capabilities.
+- **Imgflip API**: For meme generation functionality.
 
-## Learn More
+## Installation
 
-To learn more about Next.js, take a look at the following resources:
+1. **Download or clone this repository**:
+   ```bash
+   git clone https://github.com/yourusername/postit.git
+   cd postit
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. **Set up environmental variables**:
+   Create a .env.local file with the following variables:
+   ```bash
+    NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+    NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+    NEXT_PUBLIC_CLERK_FRONTEND_API=your_clerk_frontend_api
+    NEXT_PUBLIC_CLERK_API_KEY=your_clerk_api_key
+3. **Run the application**:
+   ```bash
+       npm run dev
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Usage
+Sign up or log in using Clerk.
+Choose a platform (e.g., Facebook, Instagram) and generate content.
+Use the meme generator to create custom memes.
+Manage your content with Supabase for smooth storage and retrieval.
+Contributing
+We welcome contributions!
+Feel free to open issues or submit pull requests to help improve the project.
