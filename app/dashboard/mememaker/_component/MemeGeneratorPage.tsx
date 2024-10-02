@@ -73,6 +73,29 @@ const MemeGenerator: React.FC = () => {
     setMemeUrl("");
   };
 
+  const downloadMeme = async () => {
+    if (!memeUrl) return;
+  
+    try {
+      const response = await fetch(memeUrl);
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `meme-${selectedMeme?.name}.png`; // Set file name for download
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+  
+      // Release the object URL after download
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error("Error downloading meme:", error);
+    }
+  };
+  
+
   return (
     <div className="container mx-auto p-8">
       <h1 className="lg:text-4xl text-3xl font-bold text-center mb-8 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-600">Create Your Own Meme</h1>
@@ -144,14 +167,14 @@ const MemeGenerator: React.FC = () => {
                 >
                     <RefreshCcw/>
                 </button>
-                <a
-                    href={memeUrl}
-                    target="_blank"
-                    download="meme.png"
-                    className="inline-block mt-4 bg-green-500 text-white p-3 rounded-lg hover:bg-green-600"
+                <button
+                  onClick={downloadMeme}
+                  className="inline-block mt-4 bg-green-500 text-white p-3 rounded-lg hover:bg-green-600"
                 >
-                    <Download />
-                </a>
+                  <Download className="mr-2" />
+                  Download Meme
+                </button>
+
             </div>
             </div>
           </div>
